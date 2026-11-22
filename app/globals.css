@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design tokens — light (default)
+   Text pairs meet WCAG AA (>= 4.5:1) on their surfaces.
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --color-bg: #f5f9f8;
+  --color-surface: #ffffff;
+  --color-surface-glass: rgba(255, 255, 255, 0.72);
+  --color-border: rgba(15, 94, 99, 0.14);
+  --color-border-glass: rgba(255, 255, 255, 0.6);
+  --page-gradient:
+    radial-gradient(circle at 8% 0%, rgba(15, 94, 99, 0.12), transparent 40%),
+    radial-gradient(circle at 92% 8%, rgba(67, 56, 202, 0.1), transparent 42%),
+    linear-gradient(160deg, #f5faf9 0%, #f1f3fc 55%, #fdf8f1 100%);
+
+  /* Text — #0f172a on white ~17:1, #475569 on white ~7.6:1 */
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+
+  /* Brand */
+  --color-primary: #0f5e63; /* deep teal — 7.5:1 with white */
+  --color-primary-hover: #0b4a4e;
+  --color-primary-ink: #0f5e63; /* teal used as text/links */
+  --color-on-primary: #ffffff;
+  --color-secondary: #4338ca; /* indigo — 7.9:1 with white */
+  --color-secondary-ink: #4338ca;
+  --color-accent: #b45309; /* warm amber — 5.0:1 with white */
+
+  /* Status tones (background / text pairs, all >= 4.5:1) */
+  --tone-neutral-bg: #e2e8f0;
+  --tone-neutral-fg: #334155;
+  --tone-info-bg: #e0e7ff;
+  --tone-info-fg: #3730a3;
+  --tone-success-bg: #dcfce7;
+  --tone-success-fg: #166534;
+  --tone-warning-bg: #fef3c7;
+  --tone-warning-fg: #92400e;
+  --tone-danger-bg: #fee2e2;
+  --tone-danger-fg: #991b1b;
+  --tone-accent-bg: #ffedd5;
+  --tone-accent-fg: #7c2d12;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+
+  /* Layered soft shadows */
+  --shadow-soft:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 4px 12px rgba(15, 23, 42, 0.06),
+    0 18px 36px -16px rgba(15, 94, 99, 0.22);
+  --shadow-lift:
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 12px 24px -8px rgba(15, 23, 42, 0.12),
+    0 36px 64px -24px rgba(15, 94, 99, 0.38);
+
+  /* Brand gradient used by primary buttons and gradient borders */
+  --gradient-brand: linear-gradient(135deg, #0f5e63 0%, #4338ca 100%);
+}
+
+/* ==========================================================================
+   Design tokens — dark (same variable names)
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-bg: #0b1417;
+    --color-surface: #13222a;
+    --color-surface-glass: rgba(19, 34, 42, 0.62);
+    --color-border: rgba(94, 234, 212, 0.16);
+    --color-border-glass: rgba(255, 255, 255, 0.08);
+    --page-gradient:
+      radial-gradient(circle at 8% 0%, rgba(20, 128, 122, 0.22), transparent 40%),
+      radial-gradient(circle at 92% 8%, rgba(79, 70, 229, 0.18), transparent 42%),
+      linear-gradient(160deg, #0b1417 0%, #111a2e 55%, #17141f 100%);
+
+    --color-text: #e6f2f1;
+    --color-text-muted: #a9c2bf;
+
+    --color-primary: #14807a;
+    --color-primary-hover: #0f6b66;
+    --color-primary-ink: #5eead4;
+    --color-on-primary: #ffffff;
+    --color-secondary: #4f46e5;
+    --color-secondary-ink: #a5b4fc;
+    --color-accent: #fbbf24;
+
+    --tone-neutral-bg: #1e2d31;
+    --tone-neutral-fg: #e2ecea;
+    --tone-info-bg: #272a5c;
+    --tone-info-fg: #c7d2fe;
+    --tone-success-bg: #173d2c;
+    --tone-success-fg: #bbf7d0;
+    --tone-warning-bg: #4a3412;
+    --tone-warning-fg: #fde68a;
+    --tone-danger-bg: #4c1d1d;
+    --tone-danger-fg: #fecaca;
+    --tone-accent-bg: #4a2c10;
+    --tone-accent-fg: #fcd9a0;
+
+    --shadow-soft:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.25),
+      0 18px 36px -16px rgba(0, 0, 0, 0.5);
+    --shadow-lift:
+      0 2px 4px rgba(0, 0, 0, 0.3),
+      0 12px 24px -8px rgba(0, 0, 0, 0.4),
+      0 36px 64px -24px rgba(20, 128, 122, 0.35);
+
+    --gradient-brand: linear-gradient(135deg, #14807a 0%, #4f46e5 100%);
+  }
+}
+
+/* ==========================================================================
+   Theme mapping for Tailwind utilities (font families only)
+   ========================================================================== */
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+body {
+  background-color: var(--color-bg);
+  background-image: var(--page-gradient);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--color-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), Georgia, serif;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+/* Glassmorphism surface */
+.glass {
+  background: var(--color-surface-glass);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--color-border-glass);
+}
+
+/* Gradient border: brand gradient shows through a 1px transparent border */
+.gradient-border {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    var(--gradient-brand) border-box;
+}
+
+/* ==========================================================================
+   Motion — every animation and transition lives behind reduced-motion check
+   ========================================================================== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* 3D tilt base (transition only; the hover transform is below) */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition:
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+
+  /* Button press */
+  .press {
+    transition: transform 150ms ease, box-shadow 150ms ease;
+  }
+
+  .press:active {
+    transform: scale(0.97);
+  }
+
+  /* Layered floating shapes */
+  .float {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  /* Page fade-in */
+  .page-fade {
+    animation: fade-in 500ms ease-out both;
+  }
+}
+
+/* 3D tilt on hover — pointer devices only, motion-allowed users only */
+@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .tilt-card:hover {
+    transform: perspective(900px) rotateX(3deg) rotateY(-4deg) translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/* ==========================================================================
+   Print — plain, high-contrast, no decoration
+   ========================================================================== */
+@media print {
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background: #ffffff !important;
+    background-image: none !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    color: #000000 !important;
+  }
+}
